@@ -38,7 +38,8 @@ text
 EOF
 
 # upload one part a time to avoid limits
-sh -c "aws configure set s3.max_concurrent_requests 1 --profile s3-sync-action"
+sh -c "aws configure set s3.max_concurrent_requests 2 --profile s3-sync-action"
+sh -c "aws configure set s3.multipart_chunksize 128MB --profile s3-sync-action"
 
 # Sync using our dedicated profile and suppress verbose messages.
 # All other flags are optional via the `args:` directive.
